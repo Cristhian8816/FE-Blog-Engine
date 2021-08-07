@@ -133,3 +133,8 @@ C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\TodoListClient.dll
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\TodoListClient.pdb
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\TodoListClient.genruntimeconfig.cache
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Create.cshtml.g.cs
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Delete.cshtml.g.cs
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Details.cshtml.g.cs
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Edit.cshtml.g.cs
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Index.cshtml.g.cs

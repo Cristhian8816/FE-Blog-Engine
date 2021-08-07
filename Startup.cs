@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Identity.Web;
 using TodoListClient.Services;
+using SpectrumTeamClient.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web.UI;
@@ -47,6 +48,7 @@ namespace WebApp_OpenIDConnect_DotNet
 
             // Add APIs
             services.AddTodoListService(Configuration);
+            services.AddSpectrumTeamService(Configuration);
 
             services.AddControllersWithViews(options =>
             {
