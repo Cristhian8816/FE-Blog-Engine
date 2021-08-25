@@ -138,3 +138,4 @@ C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Details.cshtml.g.cs
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Edit.cshtml.g.cs
 C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\Razor\Views\SpectrumTeam\Index.cshtml.g.cs
+C:\Users\cgomezl\Documents\Spectrum\Azure Active Directory B2C Course\SSpectrumB2Capp\Web App\obj\Debug\netcoreapp3.1\TodoListClient.csproj.AssemblyReference.cache

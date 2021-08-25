@@ -45,15 +45,15 @@ namespace SpectrumTeamClient.Services
             _TodoListBaseAddress = configuration["TodoList:TodoListBaseAddress"];
         }
        
-        public async Task<IEnumerable<Spectrum>> GetAsync()
+        public async Task<IEnumerable<Languages>> GetAsync()
         {
             await PrepareAuthenticatedClient();
 
-            var response = await _httpClient.GetAsync($"{ _TodoListBaseAddress}/spectrumTeam");
+            var response = await _httpClient.GetAsync($"{ _TodoListBaseAddress}/api/Languages/GetList");
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                IEnumerable<Spectrum> todolist = JsonConvert.DeserializeObject<IEnumerable<Spectrum>>(content);
+                IEnumerable<Languages> todolist = JsonConvert.DeserializeObject<IEnumerable<Languages>>(content);
 
                 return todolist;
             }
