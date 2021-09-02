@@ -14,6 +14,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using SpectrumTeamService.Models;
+using System;
 
 namespace SpectrumTeamClient.Services
 {
@@ -53,13 +54,16 @@ namespace SpectrumTeamClient.Services
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                IEnumerable<Languages> todolist = JsonConvert.DeserializeObject<IEnumerable<Languages>>(content);
+                
+                EntityResponse<Languages> todolist = JsonConvert.DeserializeObject<EntityResponse<Languages>>(content);
 
-                return todolist;
+                todolist.Authorization = response.RequestMessage.Headers.Authorization.Parameter;
+
+                return todolist.ResultData;
             }
 
             throw new HttpRequestException($"Invalid status code in the HttpResponseMessage: {response.StatusCode}.");
-        }
+        }       
 
         private async Task PrepareAuthenticatedClient()
         {
@@ -68,6 +72,23 @@ namespace SpectrumTeamClient.Services
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-       
+
+        public async Task<Languages> GetAsync(int id)
+        {
+            await PrepareAuthenticatedClient();
+            //var endPoint = new Uri(string.Concat("http://localhost:57961​/api/Languages/GetById?Id=", id));
+
+            var response = await _httpClient.GetAsync("http://localhost:57961​/api/Languages/GetById?Id=1");
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Languages languages = JsonConvert.DeserializeObject<Languages>(content);
+
+                return languages;
+            }
+
+            throw new HttpRequestException($"Invalid status code in the HttpResponseMessage: {response.StatusCode}.");
+        }
+
     }
 }

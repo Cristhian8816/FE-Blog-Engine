@@ -33,5 +33,7 @@ namespace SpectrumTeamClient.Services
     public interface ISpectrumTeamService
     {
         Task<IEnumerable<Languages>> GetAsync();
+
+        Task<Languages> GetAsync(int id);      
     }
 }

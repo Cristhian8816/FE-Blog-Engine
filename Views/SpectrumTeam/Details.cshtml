@@ -1,10 +1,10 @@
-﻿@model TodoListService.Models.Todo
+﻿@model SpectrumTeamService.Models.Languages
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>ToDo Details</h2>
+<h2>Lenguage Details</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -21,10 +21,10 @@
     <tbody>
         <tr>
             <td>
-                @Html.DisplayFor(model => model.Owner)
+                @Html.DisplayFor(model => model.Code)
             </td>
             <td>
-                @Html.DisplayFor(model => model.Title)
+                @Html.DisplayFor(model => model.CreatedAt)
             </td>
         </tr>
     </tbody>

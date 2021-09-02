@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,6 +48,6 @@ namespace SpectrumTeamService.Models
         /// Gets or Sets from UpdatedBy.
         /// </summary>
         
-        public string UpdatedBy { get; set; }
+        public string UpdatedBy { get; set; }      
     }
 }
