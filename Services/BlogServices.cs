@@ -13,23 +13,24 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using SpectrumTeamService.Models;
+using BlogService.Models;
 using System;
+using BLogService.Models;
 
-namespace SpectrumTeamClient.Services
+namespace BlogClient.Services
 {
-    public static class SpectrumTeamServiceExtensions
+    public static class BlogServiceExtensions
     {
-        public static void AddSpectrumTeamService(this IServiceCollection services, IConfiguration configuration)
+        public static void AddBlogService(this IServiceCollection services, IConfiguration configuration)
         {
             // https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests
-            services.AddHttpClient<ISpectrumTeamService, SpectrumTeamService>();
+            services.AddHttpClient<IBlogService, BlogService>();
         }
     }
 
     /// <summary></summary>
-    /// <seealso cref="SpectrumTeamClient.Services.ISpectrumTeamService" />
-    public class SpectrumTeamService : ISpectrumTeamService
+    /// <seealso cref="BlogClient.Services.IBlogService" />
+    public class BlogService : IBlogService
     {
         private readonly IHttpContextAccessor _contextAccessor;
         private readonly HttpClient _httpClient;
@@ -37,7 +38,7 @@ namespace SpectrumTeamClient.Services
         private readonly string _TodoListBaseAddress = string.Empty;
         private readonly ITokenAcquisition _tokenAcquisition;
 
-        public SpectrumTeamService(ITokenAcquisition tokenAcquisition, HttpClient httpClient, IConfiguration configuration, IHttpContextAccessor contextAccessor)
+        public BlogService(ITokenAcquisition tokenAcquisition, HttpClient httpClient, IConfiguration configuration, IHttpContextAccessor contextAccessor)
         {
             _httpClient = httpClient;
             _tokenAcquisition = tokenAcquisition;
@@ -46,20 +47,20 @@ namespace SpectrumTeamClient.Services
             _TodoListBaseAddress = configuration["TodoList:TodoListBaseAddress"];
         }
        
-        public async Task<IEnumerable<Languages>> GetAsync()
+        public async Task<IEnumerable<Blogs>> GetAsync()
         {
             await PrepareAuthenticatedClient();
 
-            var response = await _httpClient.GetAsync($"{ _TodoListBaseAddress}​api/BlogEngine​/Insert");
+            var response = await _httpClient.GetAsync($"{ _TodoListBaseAddress}");
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var content = await response.Content.ReadAsStringAsync();
-                
-                EntityResponse<Languages> todolist = JsonConvert.DeserializeObject<EntityResponse<Languages>>(content);
 
-                todolist.Authorization = response.RequestMessage.Headers.Authorization.Parameter;
+                EntityResponseBlog<Blogs> Bloglist = JsonConvert.DeserializeObject<EntityResponseBlog<Blogs>>(content);
 
-                return todolist.ResultData;
+                Bloglist.Authorization = response.RequestMessage.Headers.Authorization.Parameter;
+
+                return Bloglist.ResultData;
             }
 
             throw new HttpRequestException($"Invalid status code in the HttpResponseMessage: {response.StatusCode}.");
@@ -72,23 +73,5 @@ namespace SpectrumTeamClient.Services
             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
-
-        public async Task<Languages> GetAsync(int id)
-        {
-            await PrepareAuthenticatedClient();
-            //var endPoint = new Uri(string.Concat("http://localhost:57961​/api/Languages/GetById?Id=", id));
-
-            var response = await _httpClient.GetAsync("http://localhost:57961​/api/Languages/GetById?Id=1");
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                Languages languages = JsonConvert.DeserializeObject<Languages>(content);
-
-                return languages;
-            }
-
-            throw new HttpRequestException($"Invalid status code in the HttpResponseMessage: {response.StatusCode}.");
-        }
-
     }
 }

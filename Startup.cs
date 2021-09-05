@@ -14,6 +14,7 @@ using SpectrumTeamClient.Services;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Identity.Web.UI;
+using BlogClient.Services;
 
 namespace WebApp_OpenIDConnect_DotNet
 {
@@ -49,6 +50,7 @@ namespace WebApp_OpenIDConnect_DotNet
             // Add APIs
             services.AddTodoListService(Configuration);
             services.AddSpectrumTeamService(Configuration);
+            services.AddBlogService(Configuration);
 
             services.AddControllersWithViews(options =>
             {

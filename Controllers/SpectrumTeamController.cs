@@ -22,25 +22,5 @@ namespace SpectrumTeamClient.Controllers
         {
             return View(await _spectrumTeamService.GetAsync());
         }
-
-        // GET: TodoList/Details/5
-        public async Task<ActionResult> Details(int id)
-        {
-            return View(await _spectrumTeamService.GetAsync(id));
-        }
-
-        //// GET: SpectrumTeam/Edit/5
-        ////[AuthorizeForScopes(ScopeKeySection = "TodoList:TodoListScope2")]
-        public async Task<ActionResult> Edit(int id)
-        {
-            Languages languague = await this._spectrumTeamService.GetAsync(id);
-
-            if (languague == null)
-            {
-                return NotFound();
-            }
-
-            return View(languague);
-        }
     }
 }
